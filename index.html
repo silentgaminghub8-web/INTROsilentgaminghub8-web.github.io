@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Silent Gaming Hub - Exclusive Access</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
@@ -22,7 +24,7 @@
             justify-content: center;
             align-items: center;
             overflow-x: hidden;
-            padding: 20px;
+            padding: 15px;
         }
         
         @keyframes gradient {
@@ -31,22 +33,13 @@
             100% { background-position: 0% 50%; }
         }
         
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-        
         .container {
             width: 100%;
             max-width: 800px;
-            background: rgba(10, 10, 30, 0.85);
+            background: rgba(10, 10, 30, 0.9);
             border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             text-align: center;
             position: relative;
@@ -54,35 +47,17 @@
             border: 1px solid rgba(79, 195, 247, 0.3);
         }
         
-        .container::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(79, 195, 247, 0.1) 0%, transparent 70%);
-            transform: rotate(0deg);
-            animation: rotate 20s linear infinite;
-            pointer-events: none;
-        }
-        
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-        
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
             color: #4fc3f7;
-            text-shadow: 0 0 15px rgba(79, 195, 247, 0.7);
-            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
+            letter-spacing: 0.5px;
         }
         
         h2 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
             color: #e0f7fa;
             font-weight: 400;
         }
@@ -91,10 +66,10 @@
             position: relative;
             width: 100%;
             padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            margin: 25px 0;
+            margin: 20px 0;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             background: #000;
         }
         
@@ -107,69 +82,61 @@
             border: none;
         }
         
-        .video-protection {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 20;
-            pointer-events: none;
-        }
-        
         .video-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 10;
             flex-direction: column;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
         }
         
         .video-message {
             color: #ff9800;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-align: center;
-            padding: 20px;
-            max-width: 90%;
+            padding: 15px;
+            max-width: 100%;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 10px;
             border: 1px solid #ff9800;
             margin-bottom: 20px;
+            line-height: 1.5;
         }
         
         .play-button {
-            padding: 15px 40px;
+            padding: 14px 35px;
             background: linear-gradient(45deg, #f50057, #c51162);
             border: none;
             border-radius: 50px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
-            box-shadow: 0 0 20px rgba(245, 0, 87, 0.7);
+            box-shadow: 0 0 15px rgba(245, 0, 87, 0.6);
         }
         
         .play-button:hover {
             background: linear-gradient(45deg, #c51162, #880e4f);
-            box-shadow: 0 0 30px rgba(245, 0, 87, 0.9);
+            box-shadow: 0 0 20px rgba(245, 0, 87, 0.8);
             transform: scale(1.05);
         }
         
         .description {
             margin: 20px 0;
             color: #e0f7fa;
-            font-size: 1.1rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.5;
             text-align: center;
+            padding: 0 10px;
         }
         
         .highlight {
@@ -178,8 +145,8 @@
         }
         
         .lock-system {
-            margin: 30px 0 20px;
-            padding: 20px;
+            margin: 25px 0 15px;
+            padding: 15px;
             background: rgba(0, 0, 30, 0.6);
             border-radius: 12px;
             border: 1px solid rgba(79, 195, 247, 0.3);
@@ -187,46 +154,53 @@
         
         .input-group {
             display: flex;
-            justify-content: center;
-            margin-top: 20px;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
         }
         
         input {
-            padding: 14px 22px;
-            width: 320px;
+            padding: 14px 20px;
+            width: 100%;
+            max-width: 400px;
             border: none;
-            border-radius: 25px 0 0 25px;
+            border-radius: 25px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
             transition: all 0.3s;
+            margin-bottom: 15px;
+            text-align: center;
         }
         
         input:focus {
             background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+            box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
         }
         
         input::placeholder {
             color: rgba(255, 255, 255, 0.6);
+            text-align: center;
         }
         
         button {
             padding: 14px 30px;
             border: none;
-            border-radius: 0 25px 25px 0;
+            border-radius: 25px;
             background: linear-gradient(45deg, #4fc3f7, #0288d1);
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
+            width: 100%;
+            max-width: 400px;
         }
         
         button:hover {
             background: linear-gradient(45deg, #0288d1, #01579b);
-            box-shadow: 0 0 20px rgba(79, 195, 247, 0.7);
+            box-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
         }
         
         .disclaimer-popup {
@@ -240,54 +214,57 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 15px;
         }
         
         .popup-content {
             background: linear-gradient(45deg, #1a237e, #283593);
-            padding: 40px;
+            padding: 25px;
             border-radius: 15px;
             text-align: center;
-            max-width: 550px;
-            width: 90%;
-            box-shadow: 0 0 40px rgba(33, 150, 243, 0.8);
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 0 30px rgba(33, 150, 243, 0.7);
             animation: pulse 2s infinite;
         }
         
         @keyframes pulse {
-            0% { box-shadow: 0 0 30px rgba(33, 150, 243, 0.7); }
-            50% { box-shadow: 0 0 50px rgba(33, 150, 243, 1); }
-            100% { box-shadow: 0 0 30px rgba(33, 150, 243, 0.7); }
+            0% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.6); }
+            50% { box-shadow: 0 0 30px rgba(33, 150, 243, 0.9); }
+            100% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.6); }
         }
         
         .popup-content h2 {
             color: #4fc3f7;
-            margin-bottom: 25px;
-            font-size: 2.2rem;
-            text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            text-shadow: 0 0 8px rgba(79, 195, 247, 0.7);
         }
         
         .popup-content p {
             color: #e0f7fa;
-            margin-bottom: 30px;
-            font-size: 1.2rem;
-            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+            line-height: 1.5;
         }
         
         .close-btn {
-            padding: 14px 40px;
+            padding: 14px 35px;
             background: linear-gradient(45deg, #f50057, #c51162);
             border: none;
             border-radius: 25px;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
+            width: 100%;
+            max-width: 250px;
         }
         
         .close-btn:hover {
             background: linear-gradient(45deg, #c51162, #880e4f);
-            box-shadow: 0 0 20px rgba(245, 0, 87, 0.7);
+            box-shadow: 0 0 15px rgba(245, 0, 87, 0.6);
         }
         
         .smile-animation {
@@ -305,6 +282,7 @@
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.8s;
+            padding: 20px;
         }
         
         .smile-animation.active {
@@ -313,32 +291,34 @@
         }
         
         .smile {
-            font-size: 12rem;
+            font-size: 6rem;
             animation: pulse-smile 1.5s infinite;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             color: #69f0ae;
-            text-shadow: 0 0 40px rgba(105, 240, 174, 0.8);
+            text-shadow: 0 0 25px rgba(105, 240, 174, 0.8);
         }
         
         @keyframes pulse-smile {
             0% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.3); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 1; }
             100% { transform: scale(1); opacity: 0.9; }
         }
         
         .smile-animation p {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: #4fc3f7;
             text-align: center;
-            max-width: 80%;
+            max-width: 100%;
+            line-height: 1.4;
         }
         
         .message {
-            margin-top: 20px;
-            font-size: 1.1rem;
-            min-height: 25px;
+            margin-top: 15px;
+            font-size: 1rem;
+            min-height: 22px;
             padding: 10px;
             border-radius: 8px;
+            text-align: center;
         }
         
         .error {
@@ -355,9 +335,9 @@
         
         .progress-container {
             width: 100%;
-            height: 8px;
+            height: 6px;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
+            border-radius: 3px;
             margin-top: 15px;
             overflow: hidden;
         }
@@ -366,51 +346,101 @@
             height: 100%;
             width: 0%;
             background: linear-gradient(90deg, #4fc3f7, #0288d1);
-            border-radius: 4px;
+            border-radius: 3px;
             transition: width 0.3s;
         }
         
         .timer {
             margin-top: 10px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #e0f7fa;
         }
         
-        @media (max-width: 600px) {
+        .mobile-optimized {
+            display: block;
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 480px) {
             h1 {
-                font-size: 2.2rem;
+                font-size: 1.8rem;
             }
             
             h2 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
             }
             
             .container {
+                padding: 15px;
+                border-radius: 12px;
+            }
+            
+            .video-message {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            
+            .play-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .description {
+                font-size: 0.95rem;
+                margin: 15px 0;
+            }
+            
+            .popup-content {
                 padding: 20px;
             }
             
-            .input-group {
-                flex-direction: column;
-                align-items: center;
+            .popup-content h2 {
+                font-size: 1.5rem;
             }
             
-            input {
-                width: 100%;
-                border-radius: 25px;
-                margin-bottom: 15px;
+            .popup-content p {
+                font-size: 1rem;
             }
             
-            button {
-                width: 100%;
-                border-radius: 25px;
+            .close-btn {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .smile {
+                font-size: 5rem;
+            }
+            
+            .smile-animation p {
+                font-size: 1.3rem;
+            }
+            
+            input, button {
+                padding: 12px 20px;
+            }
+        }
+        
+        @media (max-width: 350px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            h2 {
+                font-size: 1rem;
+            }
+            
+            .video-message {
+                font-size: 0.9rem;
+            }
+            
+            .play-button {
+                padding: 10px 25px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Particle Animation Background -->
-    <canvas class="particles" id="particles"></canvas>
-    
     <!-- Disclaimer Popup -->
     <div class="disclaimer-popup" id="disclaimerPopup">
         <div class="popup-content">
@@ -438,12 +468,8 @@
                 src="about:blank"
                 frameborder="0" 
                 allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen
-                onload="loadVideo()">
+                allowfullscreen>
             </iframe>
-            
-            <!-- Protection layer to prevent right-click -->
-            <div class="video-protection" id="videoProtection"></div>
             
             <!-- Video overlay with play button -->
             <div class="video-overlay" id="videoOverlay">
@@ -484,10 +510,6 @@
             const smileAnimation = document.getElementById('smileAnimation');
             const progressBar = document.getElementById('progressBar');
             const timer = document.getElementById('timer');
-            const videoProtection = document.getElementById('videoProtection');
-            
-            // Initialize particles
-            initParticles();
             
             // Show main content when popup is closed
             closePopupBtn.addEventListener('click', function() {
@@ -495,10 +517,10 @@
                 mainContent.style.display = 'block';
             });
             
-            // Load the video when the play button is clicked
+            // Play video when play button is clicked
             playButton.addEventListener('click', function() {
                 // Load the YouTube video with enhanced restrictions
-                youtubeVideo.src = "https://www.youtube.com/embed/qx3r6uSi6Uw?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&showinfo=0&autoplay=1";
+                youtubeVideo.src = "https://www.youtube.com/embed/qx3r6uSi6Uw?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&showinfo=0";
                 videoOverlay.style.display = 'none';
                 
                 // Start tracking progress (simulated)
@@ -593,91 +615,6 @@
                     showMessage('Action disabled', 'error');
                 }
             });
-            
-            // Enhanced protection for the video
-            videoProtection.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                showMessage('Video controls are disabled', 'error');
-                return false;
-            });
-            
-            // Particle animation function
-            function initParticles() {
-                const canvas = document.getElementById('particles');
-                const ctx = canvas.getContext('2d');
-                let particlesArray = [];
-                
-                // Set canvas size
-                function setCanvasSize() {
-                    canvas.width = window.innerWidth;
-                    canvas.height = window.innerHeight;
-                }
-                
-                setCanvasSize();
-                window.addEventListener('resize', setCanvasSize);
-                
-                // Particle class
-                class Particle {
-                    constructor() {
-                        this.x = Math.random() * canvas.width;
-                        this.y = Math.random() * canvas.height;
-                        this.size = Math.random() * 3 + 1;
-                        this.speedX = Math.random() * 2 - 1;
-                        this.speedY = Math.random() * 2 - 1;
-                        this.color = `rgba(${Math.random() * 100 + 100}, ${Math.random() * 100 + 150}, ${Math.random() * 255}, ${Math.random() * 0.5 + 0.2})`;
-                    }
-                    
-                    update() {
-                        this.x += this.speedX;
-                        this.y += this.speedY;
-                        
-                        if (this.x > canvas.width || this.x < 0) {
-                            this.speedX = -this.speedX;
-                        }
-                        if (this.y > canvas.height || this.y < 0) {
-                            this.speedY = -this.speedY;
-                        }
-                    }
-                    
-                    draw() {
-                        ctx.fillStyle = this.color;
-                        ctx.beginPath();
-                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                        ctx.fill();
-                    }
-                }
-                
-                // Create particles
-                function init() {
-                    particlesArray = [];
-                    const numberOfParticles = (canvas.width * canvas.height) / 9000;
-                    
-                    for (let i = 0; i < numberOfParticles; i++) {
-                        particlesArray.push(new Particle());
-                    }
-                }
-                
-                // Animate particles
-                function animate() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    
-                    for (let i = 0; i < particlesArray.length; i++) {
-                        particlesArray[i].update();
-                        particlesArray[i].draw();
-                    }
-                    
-                    requestAnimationFrame(animate);
-                }
-                
-                init();
-                animate();
-                
-                // Reinitialize on resize
-                window.addEventListener('resize', () => {
-                    setCanvasSize();
-                    init();
-                });
-            }
         });
     </script>
 </body>
