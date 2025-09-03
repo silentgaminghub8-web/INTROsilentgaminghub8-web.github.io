@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silent Gaming Hub - Exclusive Access</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(-45deg, #0a0a2a, #1a1a4a, #2d2d6e, #414196);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: rgba(10, 10, 30, 0.85);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(79, 195, 247, 0.3);
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(79, 195, 247, 0.1) 0%, transparent 70%);
+            transform: rotate(0deg);
+            animation: rotate 20s linear infinite;
+            pointer-events: none;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #4fc3f7;
+            text-shadow: 0 0 15px rgba(79, 195, 247, 0.7);
+            letter-spacing: 1px;
+        }
+        
+        h2 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #e0f7fa;
+            font-weight: 400;
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+            background: #000;
+        }
+        
+        #youtube-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-protection {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 20;
+            pointer-events: none;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            flex-direction: column;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .video-message {
+            color: #ff9800;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 20px;
+            max-width: 90%;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            border: 1px solid #ff9800;
+            margin-bottom: 20px;
+        }
+        
+        .play-button {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #f50057, #c51162);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px rgba(245, 0, 87, 0.7);
+        }
+        
+        .play-button:hover {
+            background: linear-gradient(45deg, #c51162, #880e4f);
+            box-shadow: 0 0 30px rgba(245, 0, 87, 0.9);
+            transform: scale(1.05);
+        }
+        
+        .description {
+            margin: 20px 0;
+            color: #e0f7fa;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+        }
+        
+        .highlight {
+            color: #69f0ae;
+            font-weight: 600;
+        }
+        
+        .lock-system {
+            margin: 30px 0 20px;
+            padding: 20px;
+            background: rgba(0, 0, 30, 0.6);
+            border-radius: 12px;
+            border: 1px solid rgba(79, 195, 247, 0.3);
+        }
+        
+        .input-group {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        input {
+            padding: 14px 22px;
+            width: 320px;
+            border: none;
+            border-radius: 25px 0 0 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1.1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(79, 195, 247, 0.5);
+        }
+        
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        button {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            background: linear-gradient(45deg, #4fc3f7, #0288d1);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: linear-gradient(45deg, #0288d1, #01579b);
+            box-shadow: 0 0 20px rgba(79, 195, 247, 0.7);
+        }
+        
+        .disclaimer-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .popup-content {
+            background: linear-gradient(45deg, #1a237e, #283593);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 550px;
+            width: 90%;
+            box-shadow: 0 0 40px rgba(33, 150, 243, 0.8);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 30px rgba(33, 150, 243, 0.7); }
+            50% { box-shadow: 0 0 50px rgba(33, 150, 243, 1); }
+            100% { box-shadow: 0 0 30px rgba(33, 150, 243, 0.7); }
+        }
+        
+        .popup-content h2 {
+            color: #4fc3f7;
+            margin-bottom: 25px;
+            font-size: 2.2rem;
+            text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
+        }
+        
+        .popup-content p {
+            color: #e0f7fa;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .close-btn {
+            padding: 14px 40px;
+            background: linear-gradient(45deg, #f50057, #c51162);
+            border: none;
+            border-radius: 25px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close-btn:hover {
+            background: linear-gradient(45deg, #c51162, #880e4f);
+            box-shadow: 0 0 20px rgba(245, 0, 87, 0.7);
+        }
+        
+        .smile-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1001;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.8s;
+        }
+        
+        .smile-animation.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .smile {
+            font-size: 12rem;
+            animation: pulse-smile 1.5s infinite;
+            margin-bottom: 30px;
+            color: #69f0ae;
+            text-shadow: 0 0 40px rgba(105, 240, 174, 0.8);
+        }
+        
+        @keyframes pulse-smile {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.3); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+        
+        .smile-animation p {
+            font-size: 2rem;
+            color: #4fc3f7;
+            text-align: center;
+            max-width: 80%;
+        }
+        
+        .message {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            min-height: 25px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        
+        .error {
+            color: #ff6d6d;
+            background: rgba(255, 0, 0, 0.1);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+        
+        .success {
+            color: #69f0ae;
+            background: rgba(0, 255, 0, 0.1);
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #4fc3f7, #0288d1);
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        
+        .timer {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #e0f7fa;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            h2 {
+                font-size: 1.2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .input-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            input {
+                width: 100%;
+                border-radius: 25px;
+                margin-bottom: 15px;
+            }
+            
+            button {
+                width: 100%;
+                border-radius: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Particle Animation Background -->
+    <canvas class="particles" id="particles"></canvas>
+    
+    <!-- Disclaimer Popup -->
+    <div class="disclaimer-popup" id="disclaimerPopup">
+        <div class="popup-content">
+            <h2>ATTENTION REQUIRED</h2>
+            <p>YOU NEED TO WATCH THIS FULL VIDEO AND YOU WILL GET THE ENTRY CODE</p>
+            <button class="close-btn" id="closePopup">I UNDERSTAND</button>
+        </div>
+    </div>
+
+    <!-- Smile Animation -->
+    <div class="smile-animation" id="smileAnimation">
+        <div class="smile">😊</div>
+        <p>Access Granted! Redirecting to Silent Gaming Hub...</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" id="mainContent" style="display: none;">
+        <h1>SILENT GAMING HUB</h1>
+        <h2>Exclusive Access Portal</h2>
+        
+        <div class="video-container">
+            <!-- YouTube video iframe with enhanced restrictions -->
+            <iframe 
+                id="youtube-video"
+                src="about:blank"
+                frameborder="0" 
+                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                onload="loadVideo()">
+            </iframe>
+            
+            <!-- Protection layer to prevent right-click -->
+            <div class="video-protection" id="videoProtection"></div>
+            
+            <!-- Video overlay with play button -->
+            <div class="video-overlay" id="videoOverlay">
+                <p class="video-message">Click the button below to start playing the video. Please watch the entire video to get the access code.</p>
+                <button class="play-button" id="playButton">PLAY VIDEO</button>
+            </div>
+        </div>
+        
+        <p class="description">The entry code will be shown in this video. <span class="highlight">Watch carefully</span> to discover the code. You must watch the entire video to proceed.</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <div class="timer" id="timer">Video progress: 0%</div>
+        
+        <div class="lock-system">
+            <h3>ENTER ACCESS CODE</h3>
+            <div class="input-group">
+                <input type="text" id="codeInput" placeholder="Enter code in CAPITAL letters" disabled>
+                <button id="submitCode" disabled>SUBMIT</button>
+            </div>
+            <p class="message" id="message"></p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get elements
+            const disclaimerPopup = document.getElementById('disclaimerPopup');
+            const mainContent = document.getElementById('mainContent');
+            const closePopupBtn = document.getElementById('closePopup');
+            const videoOverlay = document.getElementById('videoOverlay');
+            const playButton = document.getElementById('playButton');
+            const youtubeVideo = document.getElementById('youtube-video');
+            const codeInput = document.getElementById('codeInput');
+            const submitCodeBtn = document.getElementById('submitCode');
+            const message = document.getElementById('message');
+            const smileAnimation = document.getElementById('smileAnimation');
+            const progressBar = document.getElementById('progressBar');
+            const timer = document.getElementById('timer');
+            const videoProtection = document.getElementById('videoProtection');
+            
+            // Initialize particles
+            initParticles();
+            
+            // Show main content when popup is closed
+            closePopupBtn.addEventListener('click', function() {
+                disclaimerPopup.style.display = 'none';
+                mainContent.style.display = 'block';
+            });
+            
+            // Load the video when the play button is clicked
+            playButton.addEventListener('click', function() {
+                // Load the YouTube video with enhanced restrictions
+                youtubeVideo.src = "https://www.youtube.com/embed/qx3r6uSi6Uw?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&showinfo=0&autoplay=1";
+                videoOverlay.style.display = 'none';
+                
+                // Start tracking progress (simulated)
+                simulateVideoProgress();
+            });
+            
+            // Handle code submission
+            submitCodeBtn.addEventListener('click', validateCode);
+            codeInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    validateCode();
+                }
+            });
+            
+            function validateCode() {
+                const code = codeInput.value.trim();
+                
+                if (code === '') {
+                    showMessage('Please enter an access code', 'error');
+                    return;
+                }
+                
+                if (code === 'UJJWAL001') {
+                    showMessage('Access granted! Redirecting...', 'success');
+                    
+                    // Show smile animation
+                    smileAnimation.classList.add('active');
+                    
+                    // Redirect after delay
+                    setTimeout(function() {
+                        window.location.href = 'https://silentgaminghub8-web.github.io/entrypagesilentgaminghub-web.github.io/';
+                    }, 3000);
+                } else {
+                    showMessage('Invalid code. Please try again.', 'error');
+                    
+                    // Shake animation for error
+                    codeInput.style.animation = 'shake 0.5s';
+                    setTimeout(() => {
+                        codeInput.style.animation = '';
+                    }, 500);
+                }
+            }
+            
+            function showMessage(text, type) {
+                message.textContent = text;
+                message.className = 'message ' + type;
+            }
+            
+            // Simulate video progress
+            function simulateVideoProgress() {
+                let progress = 0;
+                const interval = setInterval(function() {
+                    progress += 1;
+                    progressBar.style.width = progress + '%';
+                    timer.textContent = 'Video progress: ' + progress + '%';
+                    
+                    if (progress >= 100) {
+                        clearInterval(interval);
+                        codeInput.disabled = false;
+                        submitCodeBtn.disabled = false;
+                        showMessage('Video completed. Enter the code shown in the video.', 'success');
+                    }
+                }, 300); // Adjust timing based on actual video length
+            }
+            
+            // Add shake animation for errors
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes shake {
+                    0%, 100% { transform: translateX(0); }
+                    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+                    20%, 40%, 60%, 80% { transform: translateX(8px); }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            // Prevent right-click context menu on entire page
+            document.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                showMessage('Right-click is disabled', 'error');
+                return false;
+            });
+            
+            // Prevent keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U
+                if (e.key === 'F12' || 
+                   (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                   (e.ctrlKey && e.shiftKey && e.key === 'C') || 
+                   (e.ctrlKey && e.key === 'U')) {
+                    e.preventDefault();
+                    showMessage('Action disabled', 'error');
+                }
+            });
+            
+            // Enhanced protection for the video
+            videoProtection.addEventListener('contextmenu', function(e) {
+                e.preventDefault();
+                showMessage('Video controls are disabled', 'error');
+                return false;
+            });
+            
+            // Particle animation function
+            function initParticles() {
+                const canvas = document.getElementById('particles');
+                const ctx = canvas.getContext('2d');
+                let particlesArray = [];
+                
+                // Set canvas size
+                function setCanvasSize() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+                
+                setCanvasSize();
+                window.addEventListener('resize', setCanvasSize);
+                
+                // Particle class
+                class Particle {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = Math.random() * canvas.height;
+                        this.size = Math.random() * 3 + 1;
+                        this.speedX = Math.random() * 2 - 1;
+                        this.speedY = Math.random() * 2 - 1;
+                        this.color = `rgba(${Math.random() * 100 + 100}, ${Math.random() * 100 + 150}, ${Math.random() * 255}, ${Math.random() * 0.5 + 0.2})`;
+                    }
+                    
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        
+                        if (this.x > canvas.width || this.x < 0) {
+                            this.speedX = -this.speedX;
+                        }
+                        if (this.y > canvas.height || this.y < 0) {
+                            this.speedY = -this.speedY;
+                        }
+                    }
+                    
+                    draw() {
+                        ctx.fillStyle = this.color;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+                
+                // Create particles
+                function init() {
+                    particlesArray = [];
+                    const numberOfParticles = (canvas.width * canvas.height) / 9000;
+                    
+                    for (let i = 0; i < numberOfParticles; i++) {
+                        particlesArray.push(new Particle());
+                    }
+                }
+                
+                // Animate particles
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    
+                    for (let i = 0; i < particlesArray.length; i++) {
+                        particlesArray[i].update();
+                        particlesArray[i].draw();
+                    }
+                    
+                    requestAnimationFrame(animate);
+                }
+                
+                init();
+                animate();
+                
+                // Reinitialize on resize
+                window.addEventListener('resize', () => {
+                    setCanvasSize();
+                    init();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
