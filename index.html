@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silent Gaming Hub - Exclusive Access</title>
+    <title>Silent Gaming Hub - Luxury Edition</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -11,610 +11,765 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
+        } 
+
         body {
-            background: linear-gradient(-45deg, #0a0a2a, #1a1a4a, #2d2d6e, #414196);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #e0e0e0;
             overflow-x: hidden;
-            padding: 15px;
-        }
-        
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        .container {
+            min-height: 100vh;
+            position: relative;
+        } 
+
+        #particles-js {
+            position: absolute;
             width: 100%;
-            max-width: 800px;
-            background: rgba(10, 10, 30, 0.9);
-            border-radius: 15px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        } 
+
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+            filter: blur(5px);
+            pointer-events: none;
+            transition: filter 0.5s ease;
+        } 
+
+        .content.accessible {
+            filter: blur(0);
+            pointer-events: all;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+        } 
+
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
+            letter-spacing: 2px;
+            animation: shine 3s infinite;
+        } 
+
+        @keyframes shine {
+            0% { background-position: -100%; }
+            100% { background-position: 200%; }
+        } 
+
+        .login-btn {
+            background: linear-gradient(45deg, #bf953f, #aa771c);
+            color: #000;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(191, 149, 63, 0.4);
+        } 
+
+        .login-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(191, 149, 63, 0.6);
+        } 
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 60px;
+        } 
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #bf953f, #fcf6ba, #b38728);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            text-shadow: 0 0 20px rgba(191, 149, 63, 0.5);
+            animation: shine 3s infinite;
+        } 
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            color: #c5cae9;
+        } 
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        } 
+
+        .feature-box {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9));
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
             backdrop-filter: blur(10px);
-            text-align: center;
+            border: 2px solid #bf953f;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(79, 195, 247, 0.3);
-        }
-        
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 12px;
-            color: #4fc3f7;
-            text-shadow: 0 0 10px rgba(79, 195, 247, 0.7);
-            letter-spacing: 0.5px;
-        }
-        
-        h2 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #e0f7fa;
-            font-weight: 400;
-        }
-        
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
-            margin: 20px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-            background: #000;
-        }
-        
-        #youtube-video {
+        } 
+
+        .feature-box:before {
+            content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-        
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.85);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-            flex-direction: column;
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .video-message {
-            color: #ff9800;
-            font-size: 1.1rem;
-            text-align: center;
-            padding: 15px;
-            max-width: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 10px;
-            border: 1px solid #ff9800;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .play-button {
-            padding: 14px 35px;
-            background: linear-gradient(45deg, #f50057, #c51162);
-            border: none;
-            border-radius: 50px;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(245, 0, 87, 0.6);
-        }
-        
-        .play-button:hover {
-            background: linear-gradient(45deg, #c51162, #880e4f);
-            box-shadow: 0 0 20px rgba(245, 0, 87, 0.8);
-            transform: scale(1.05);
-        }
-        
-        .description {
-            margin: 20px 0;
-            color: #e0f7fa;
-            font-size: 1rem;
-            line-height: 1.5;
-            text-align: center;
-            padding: 0 10px;
-        }
-        
-        .highlight {
-            color: #69f0ae;
-            font-weight: 600;
-        }
-        
-        .lock-system {
-            margin: 25px 0 15px;
-            padding: 15px;
-            background: rgba(0, 0, 30, 0.6);
-            border-radius: 12px;
-            border: 1px solid rgba(79, 195, 247, 0.3);
-        }
-        
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 15px;
-        }
-        
-        input {
-            padding: 14px 20px;
-            width: 100%;
-            max-width: 400px;
-            border: none;
-            border-radius: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.3s;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(191, 149, 63, 0.2), transparent);
+            transform: rotate(45deg);
+            animation: reflect 3s infinite;
+        } 
+
+        @keyframes reflect {
+            0% { transform: rotate(45deg) translateX(-100%); }
+            100% { transform: rotate(45deg) translateX(100%); }
+        } 
+
+        .feature-box:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(191, 149, 63, 0.3);
+        } 
+
+        .feature-box h3 {
+            font-size: 1.5rem;
             margin-bottom: 15px;
+            color: #fcf6ba;
+        } 
+
+        .feature-box p {
+            color: #c5cae9;
+            line-height: 1.6;
+        } 
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #bf953f;
+        } 
+
+        /* Member Counter */
+        .member-counter {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9));
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 60px;
             text-align: center;
-        }
-        
-        input:focus {
-            background: rgba(255, 255, 255, 0.15);
-            box-shadow: 0 0 15px rgba(79, 195, 247, 0.5);
-        }
-        
-        input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #bf953f;
+        } 
+
+        .member-counter h2 {
+            color: #fcf6ba;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        } 
+
+        .counter {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #bf953f;
+            text-shadow: 0 0 10px rgba(191, 149, 63, 0.5);
+        } 
+
+        .counter-text {
+            font-size: 1.2rem;
+            color: #c5cae9;
+            margin-top: 10px;
+        } 
+
+        /* Instagram Section */
+        .instagram-section {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9));
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 60px;
             text-align: center;
-        }
-        
-        button {
-            padding: 14px 30px;
-            border: none;
-            border-radius: 25px;
-            background: linear-gradient(45deg, #4fc3f7, #0288d1);
-            color: white;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #bf953f;
+        } 
+
+        .instagram-section h2 {
+            color: #fcf6ba;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            line-height: 1.6;
+        } 
+
+        .instagram-link {
+            display: inline-block;
+            margin-top: 20px;
+            transition: transform 0.3s ease;
+        } 
+
+        .instagram-link:hover {
+            transform: scale(1.2);
+        } 
+
+        .instagram-link i {
+            font-size: 3rem;
+            color: #bf953f;
+            text-shadow: 0 0 10px rgba(191, 149, 63, 0.5);
+        } 
+
+        /* Job Application Form */
+        .job-application {
+            background: linear-gradient(145deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9));
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #bf953f;
+        } 
+
+        .job-application h2 {
+            color: #fcf6ba;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 2rem;
+        } 
+
+        .job-application p {
+            color: #c5cae9;
+            text-align: center;
+            margin-bottom: 30px;
+        } 
+
+        .form-group {
+            margin-bottom: 20px;
+        } 
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #fcf6ba;
+        } 
+
+        .form-group input, .form-group textarea {
             width: 100%;
-            max-width: 400px;
-        }
-        
-        button:hover {
-            background: linear-gradient(45deg, #0288d1, #01579b);
-            box-shadow: 0 0 15px rgba(79, 195, 247, 0.6);
-        }
-        
-        .disclaimer-popup {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #bf953f;
+            background: rgba(30, 30, 30, 0.8);
+            color: #fff;
+        } 
+
+        .submit-btn {
+            background: linear-gradient(45deg, #bf953f, #aa771c);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            box-shadow: 0 4px 15px rgba(191, 149, 63, 0.4);
+        } 
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(191, 149, 63, 0.6);
+        } 
+
+        /* Popup Styles */
+        .popup {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(10, 10, 10, 0.95);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            padding: 15px;
-        }
-        
-        .popup-content {
-            background: linear-gradient(45deg, #1a237e, #283593);
-            padding: 25px;
-            border-radius: 15px;
-            text-align: center;
-            width: 100%;
-            max-width: 500px;
-            box-shadow: 0 0 30px rgba(33, 150, 243, 0.7);
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.6); }
-            50% { box-shadow: 0 0 30px rgba(33, 150, 243, 0.9); }
-            100% { box-shadow: 0 0 20px rgba(33, 150, 243, 0.6); }
-        }
-        
-        .popup-content h2 {
-            color: #4fc3f7;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            text-shadow: 0 0 8px rgba(79, 195, 247, 0.7);
-        }
-        
-        .popup-content p {
-            color: #e0f7fa;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            line-height: 1.5;
-        }
-        
-        .close-btn {
-            padding: 14px 35px;
-            background: linear-gradient(45deg, #f50057, #c51162);
-            border: none;
-            border-radius: 25px;
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            width: 100%;
-            max-width: 250px;
-        }
-        
-        .close-btn:hover {
-            background: linear-gradient(45deg, #c51162, #880e4f);
-            box-shadow: 0 0 15px rgba(245, 0, 87, 0.6);
-        }
-        
-        .smile-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 1001;
             opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.8s;
-            padding: 20px;
-        }
-        
-        .smile-animation.active {
+            visibility: hidden;
+            transition: all 0.3s ease;
+        } 
+
+        .popup.active {
             opacity: 1;
-            pointer-events: all;
-        }
-        
-        .smile {
-            font-size: 6rem;
-            animation: pulse-smile 1.5s infinite;
-            margin-bottom: 25px;
-            color: #69f0ae;
-            text-shadow: 0 0 25px rgba(105, 240, 174, 0.8);
-        }
-        
-        @keyframes pulse-smile {
-            0% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.9; }
-        }
-        
-        .smile-animation p {
+            visibility: visible;
+        } 
+
+        .popup-content {
+            background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+            width: 90%;
+            max-width: 600px;
+            border-radius: 15px;
+            padding: 30px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+            border: 2px solid #bf953f;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        } 
+
+        .popup.active .popup-content {
+            transform: scale(1);
+        } 
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #bf953f;
             font-size: 1.5rem;
-            color: #4fc3f7;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        } 
+
+        .close-btn:hover {
+            color: #ff6b6b;
+        } 
+
+        .popup h2 {
+            color: #fcf6ba;
+            margin-bottom: 20px;
             text-align: center;
-            max-width: 100%;
-            line-height: 1.4;
-        }
-        
-        .message {
-            margin-top: 15px;
-            font-size: 1rem;
-            min-height: 22px;
-            padding: 10px;
-            border-radius: 8px;
+        } 
+
+        .popup p {
+            color: #c5cae9;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        } 
+
+        /* Footer */
+        footer {
             text-align: center;
-        }
-        
-        .error {
-            color: #ff6d6d;
-            background: rgba(255, 0, 0, 0.1);
-            border: 1px solid rgba(255, 0, 0, 0.3);
-        }
-        
-        .success {
-            color: #69f0ae;
-            background: rgba(0, 255, 0, 0.1);
-            border: 1px solid rgba(0, 255, 0, 0.3);
-        }
-        
-        .progress-container {
-            width: 100%;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 3px;
-            margin-top: 15px;
-            overflow: hidden;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            width: 0%;
-            background: linear-gradient(90deg, #4fc3f7, #0288d1);
-            border-radius: 3px;
-            transition: width 0.3s;
-        }
-        
-        .timer {
-            margin-top: 10px;
+            padding: 30px 0;
+            color: #c5cae9;
             font-size: 0.9rem;
-            color: #e0f7fa;
+        } 
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        } 
+
+        .social-links a {
+            color: #bf953f;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        } 
+
+        .social-links a:hover {
+            color: #fcf6ba;
+        } 
+
+        /* Login Popup Styles */
+        #login-popup {
+            opacity: 1;
+            visibility: visible;
+            z-index: 10000;
+            display: flex;
         }
-        
-        .mobile-optimized {
+
+        #login-popup .popup-content {
+            max-width: 400px;
+        }
+
+        .login-form .form-group {
+            margin-bottom: 20px;
+        }
+
+        .login-form .form-group label {
             display: block;
+            margin-bottom: 8px;
+            color: #fcf6ba;
         }
-        
-        /* Mobile-specific adjustments */
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.8rem;
+
+        .login-form .form-group input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #bf953f;
+            background: rgba(30, 30, 30, 0.8);
+            color: #fff;
+        }
+
+        .login-btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            text-align: center;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
             }
             
-            h2 {
-                font-size: 1.1rem;
+            .hero h1 {
+                font-size: 2.5rem;
             }
             
-            .container {
-                padding: 15px;
-                border-radius: 12px;
+            .features {
+                grid-template-columns: 1fr;
             }
             
-            .video-message {
-                font-size: 1rem;
-                padding: 12px;
+            .counter {
+                font-size: 2.5rem;
             }
             
-            .play-button {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-            
-            .description {
-                font-size: 0.95rem;
-                margin: 15px 0;
-            }
-            
-            .popup-content {
+            #login-popup .popup-content {
+                width: 90%;
                 padding: 20px;
-            }
-            
-            .popup-content h2 {
-                font-size: 1.5rem;
-            }
-            
-            .popup-content p {
-                font-size: 1rem;
-            }
-            
-            .close-btn {
-                padding: 12px 30px;
-                font-size: 1rem;
-            }
-            
-            .smile {
-                font-size: 5rem;
-            }
-            
-            .smile-animation p {
-                font-size: 1.3rem;
-            }
-            
-            input, button {
-                padding: 12px 20px;
-            }
-        }
-        
-        @media (max-width: 350px) {
-            h1 {
-                font-size: 1.6rem;
-            }
-            
-            h2 {
-                font-size: 1rem;
-            }
-            
-            .video-message {
-                font-size: 0.9rem;
-            }
-            
-            .play-button {
-                padding: 10px 25px;
-                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Disclaimer Popup -->
-    <div class="disclaimer-popup" id="disclaimerPopup">
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Login Popup (always visible until login) -->
+    <div class="popup active" id="login-popup">
         <div class="popup-content">
-            <h2>ATTENTION REQUIRED</h2>
-            <p>YOU NEED TO WATCH THIS FULL VIDEO AND YOU WILL GET THE ENTRY CODE</p>
-            <button class="close-btn" id="closePopup">I UNDERSTAND</button>
+            <h2>Login Required</h2>
+            <p>Please login to access Silent Gaming Hub</p>
+            <form class="login-form" id="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <div class="error-message" id="login-error">
+                    Invalid login details, try again
+                </div>
+                <div class="login-btn-container">
+                    <button type="submit" class="submit-btn">Login</button>
+                </div>
+            </form>
         </div>
     </div>
-
-    <!-- Smile Animation -->
-    <div class="smile-animation" id="smileAnimation">
-        <div class="smile">😊</div>
-        <p>Access Granted! Redirecting to Silent Gaming Hub...</p>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container" id="mainContent" style="display: none;">
-        <h1>SILENT GAMING HUB</h1>
-        <h2>Exclusive Access Portal</h2>
+    
+    <div class="content" id="main-content">
+        <!-- Header -->
+        <header>
+            <div class="logo">SILENT GAMING HUB</div>
+        </header>
         
-        <div class="video-container">
-            <!-- YouTube video iframe with enhanced restrictions -->
-            <iframe 
-                id="youtube-video"
-                src="about:blank"
-                frameborder="0" 
-                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>LUXURY GAMING EXPERIENCE</h1>
+            <p>Elevate your gaming journey with our premium tournaments and exclusive features</p>
+        </section>
+        
+        <!-- Features Section -->
+        <section class="features">
+            <div class="feature-box" onclick="openPopup('regular-popup')">
+                <div class="feature-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Regular Tournament</h3>
+                <p>Weekly free tournaments with fair matchmaking</p>
+            </div>
             
-            <!-- Video overlay with play button -->
-            <div class="video-overlay" id="videoOverlay">
-                <p class="video-message">Click the button below to start playing the video. Please watch the entire video to get the access code.</p>
-                <button class="play-button" id="playButton">PLAY VIDEO</button>
+            <div class="feature-box" onclick="openPopup('advance-popup')">
+                <div class="feature-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3>Advance Tournament</h3>
+                <p>High-stakes competitions with impressive prize pools</p>
             </div>
-        </div>
-        
-        <p class="description">The entry code will be shown in this video. <span class="highlight">Watch carefully</span> to discover the code. You must watch the entire video to proceed.</p>
-        
-        <div class="progress-container">
-            <div class="progress-bar" id="progressBar"></div>
-        </div>
-        <div class="timer" id="timer">Video progress: 0%</div>
-        
-        <div class="lock-system">
-            <h3>ENTER ACCESS CODE</h3>
-            <div class="input-group">
-                <input type="text" id="codeInput" placeholder="Enter code in CAPITAL letters" disabled>
-                <button id="submitCode" disabled>SUBMIT</button>
+            
+            <div class="feature-box" onclick="openPopup('ultra-popup')">
+                <div class="feature-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <h3>Ultra Pro Tournament</h3>
+                <p>Elite tournaments for the best of the best</p>
             </div>
-            <p class="message" id="message"></p>
+            
+            <div class="feature-box" onclick="openPopup('anti-hack-popup')">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Anti Hack System</h3>
+                <p>Our advanced security to ensure fair play</p>
+            </div>
+        </section>
+        
+        <!-- Member Counter -->
+        <section class="member-counter">
+            <h2>OUR GROWING COMMUNITY</h2>
+            <div class="counter" id="member-counter">1258</div>
+            <div class="counter-text">Members and counting</div>
+        </section>
+        
+        <!-- Instagram Section -->
+        <section class="instagram-section">
+            <h2>This is my main Instagram. You can follow me for some unprofessional content like how handsome your friend, Ujjwal and CEO of this website, by the way, I have invested over three lakh rupees to build this all.</h2>
+            <a href="https://www.instagram.com/rajmalik_99" class="instagram-link" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </section>
+        
+        <!-- Job Application Form -->
+        <section class="job-application">
+            <h2>WORK WITH US</h2>
+            <p>If you want to register yourself as a worker and want a job, 20,000 per month to 40,000 per month.<br>
+            This feature will available after 1 March 2026</p>
+            
+            <form>
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your phone number">
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Gaming Experience</label>
+                    <textarea id="experience" rows="4" placeholder="Tell us about your gaming experience"></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </form>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="social-links">
+                <a href="https://www.instagram.com/sg_hub.99" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://youtube.com/@silentgaminghub1" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2023 Silent Gaming Hub. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    <!-- Popups -->
+    <div class="popup" id="regular-popup">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('regular-popup')">&times;</button>
+            <h2>Regular Tournament</h2>
+            <p>We organise regular tournament every week. You don't need to pay any single penny or rupees to play these. You will never get a option that room full because we will separate you all in 50-50 groups. Each group will have their own tournament so fully fair and everyone can get chance to play until March 2026.</p>
         </div>
     </div>
+    
+    <div class="popup" id="advance-popup">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('advance-popup')">&times;</button>
+            <h2>Advance Tournament</h2>
+            <p>We organise advanced tournament of price pool of two lakh rupees which is going to start on one December if we hit 5000 members in subscription and entry fee of this tournament, only ₹250, and this is a squad match.</p>
+        </div>
+    </div>
+    
+    <div class="popup" id="ultra-popup">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('ultra-popup')">&times;</button>
+            <h2>Ultra Pro Tournament</h2>
+            <p>We organise a ultra pro tournament on 15th March with the prize pool of over 1 million this tournament have no eatery price. Demand of this tournament is 20,000 member on website.</p>
+        </div>
+    </div>
+    
+    <div class="popup" id="anti-hack-popup">
+        <div class="popup-content">
+            <button class="close-btn" onclick="closePopup('anti-hack-popup')">&times;</button>
+            <h2>Our Anti Hack System</h2>
+            <p>We are not using any AI. We are using a human monitor system we will available for your request like if in any tournament you killed by any hacker, you just need to record that gameplay of hacker after you killed. If we monitor any suspicious thing in that video footage, we will remake your all tournament members and remove that person from our subscription with a band of gaming UID. He cannot play again with that same ID on our subscription.</p>
+        </div>
+    </div> 
 
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Get elements
-            const disclaimerPopup = document.getElementById('disclaimerPopup');
-            const mainContent = document.getElementById('mainContent');
-            const closePopupBtn = document.getElementById('closePopup');
-            const videoOverlay = document.getElementById('videoOverlay');
-            const playButton = document.getElementById('playButton');
-            const youtubeVideo = document.getElementById('youtube-video');
-            const codeInput = document.getElementById('codeInput');
-            const submitCodeBtn = document.getElementById('submitCode');
-            const message = document.getElementById('message');
-            const smileAnimation = document.getElementById('smileAnimation');
-            const progressBar = document.getElementById('progressBar');
-            const timer = document.getElementById('timer');
+        // Initialize particles.js with golden particles
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: "#bf953f" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5, random: true },
+                size: { value: 4, random: true },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#bf953f",
+                    opacity: 0.4,
+                    width: 2
+                },
+                move: {
+                    enable: true,
+                    speed: 2,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "grab" },
+                    onclick: { enable: true, mode: "push" },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        }); 
+
+        // Login functionality
+        // Store valid credentials (can be updated anytime)
+        const validCredentials = {
+            "admin": "password123",
+            "user": "gaminghub2023",
+            "ujjwal": "silenthub",
+            "testuser": "testpass"
+            // Add more username-password pairs as needed
+        };
+
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            // Show main content when popup is closed
-            closePopupBtn.addEventListener('click', function() {
-                disclaimerPopup.style.display = 'none';
-                mainContent.style.display = 'block';
-            });
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorElement = document.getElementById('login-error');
             
-            // Play video when play button is clicked
-            playButton.addEventListener('click', function() {
-                // Load the YouTube video with enhanced restrictions
-                youtubeVideo.src = "https://www.youtube.com/embed/qx3r6uSi6Uw?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&showinfo=0";
-                videoOverlay.style.display = 'none';
+            // Check if credentials are valid
+            if (validCredentials[username] && validCredentials[username] === password) {
+                // Successful login - hide login popup and show content
+                document.getElementById('login-popup').classList.remove('active');
+                document.getElementById('main-content').classList.add('accessible');
                 
-                // Start tracking progress (simulated)
-                simulateVideoProgress();
-            });
-            
-            // Handle code submission
-            submitCodeBtn.addEventListener('click', validateCode);
-            codeInput.addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    validateCode();
+                // Hide the popup completely after transition
+                setTimeout(() => {
+                    document.getElementById('login-popup').style.display = 'none';
+                }, 500);
+            } else {
+                // Failed login - show error message
+                errorElement.style.display = 'block';
+                
+                // Shake animation for error feedback
+                document.getElementById('login-form').classList.add('shake');
+                setTimeout(() => {
+                    document.getElementById('login-form').classList.remove('shake');
+                }, 500);
+            }
+        });
+
+        // Add shake animation for login errors
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
+                20%, 40%, 60%, 80% { transform: translateX(10px); }
+            }
+            .shake {
+                animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Popup functionality
+        function openPopup(id) {
+            document.getElementById(id).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        } 
+
+        function closePopup(id) {
+            document.getElementById(id).classList.remove('active');
+            document.body.style.overflow = 'auto';
+        } 
+
+        // Close popup when clicking outside content
+        document.querySelectorAll('.popup').forEach(popup => {
+            popup.addEventListener('click', (e) => {
+                if (e.target === popup && popup.id !== 'login-popup') {
+                    closePopup(popup.id);
                 }
             });
+        }); 
+
+        // Member counter functionality
+        let memberCount = 125;
+        const counterElement = document.getElementById('member-counter');
+        
+        function updateCounter() {
+            // Add between 1-5 members randomly 13 times a day
+            // For demo purposes, we'll update every 50 seconds instead of daily
+            const dailyAdditions = [2, 3, 6, 1, 1]; // Example: 2+3+6+1+1 = 13
+            let additionsToday = 0;
             
-            function validateCode() {
-                const code = codeInput.value.trim();
-                
-                if (code === '') {
-                    showMessage('Please enter an access code', 'error');
-                    return;
-                }
-                
-                if (code === 'UJJWAL001') {
-                    showMessage('Access granted! Redirecting...', 'success');
+            const interval = setInterval(() => {
+                if (additionsToday < dailyAdditions.length) {
+                    memberCount += dailyAdditions[additionsToday];
+                    counterElement.textContent = memberCount;
+                    additionsToday++;
                     
-                    // Show smile animation
-                    smileAnimation.classList.add('active');
-                    
-                    // Redirect after delay
-                    setTimeout(function() {
-                        window.location.href = 'https://silentgaminghub8-web.github.io/entrypagesilentgaminghub-web.github.io/';
-                    }, 3000);
-                } else {
-                    showMessage('Invalid code. Please try again.', 'error');
-                    
-                    // Shake animation for error
-                    codeInput.style.animation = 'shake 0.5s';
+                    // Add a visual effect when the counter updates
+                    counterElement.style.transform = 'scale(1.1)';
                     setTimeout(() => {
-                        codeInput.style.animation = '';
-                    }, 500);
+                        counterElement.style.transform = 'scale(1)';
+                    }, 300);
+                } else {
+                    clearInterval(interval);
                 }
-            }
-            
-            function showMessage(text, type) {
-                message.textContent = text;
-                message.className = 'message ' + type;
-            }
-            
-            // Simulate video progress
-            function simulateVideoProgress() {
-                let progress = 0;
-                const interval = setInterval(function() {
-                    progress += 1;
-                    progressBar.style.width = progress + '%';
-                    timer.textContent = 'Video progress: ' + progress + '%';
-                    
-                    if (progress >= 100) {
-                        clearInterval(interval);
-                        codeInput.disabled = false;
-                        submitCodeBtn.disabled = false;
-                        showMessage('Video completed. Enter the code shown in the video.', 'success');
-                    }
-                }, 300); // Adjust timing based on actual video length
-            }
-            
-            // Add shake animation for errors
-            const style = document.createElement('style');
-            style.textContent = `
-                @keyframes shake {
-                    0%, 100% { transform: translateX(0); }
-                    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
-                    20%, 40%, 60%, 80% { transform: translateX(8px); }
-                }
-            `;
-            document.head.appendChild(style);
-            
-            // Prevent right-click context menu on entire page
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                showMessage('Right-click is disabled', 'error');
-                return false;
-            });
-            
-            // Prevent keyboard shortcuts
-            document.addEventListener('keydown', function(e) {
-                // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U
-                if (e.key === 'F12' || 
-                   (e.ctrlKey && e.shiftKey && e.key === 'I') || 
-                   (e.ctrlKey && e.shiftKey && e.key === 'C') || 
-                   (e.ctrlKey && e.key === 'U')) {
-                    e.preventDefault();
-                    showMessage('Action disabled', 'error');
-                }
-            });
+            }, 5000); // Update every 5 seconds for demo
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateCounter();
         });
     </script>
 </body>
